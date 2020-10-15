@@ -30,9 +30,31 @@ class ApplicationController < ActionController::Base
     end
 
     # ====================== Multiplication =====================
+    def multiplicationForm
+      render({ :template => "/First4/multiplicationForm.html.erb"})
 
+    end
+    
+    def multiplicationRes
+      @first = params.fetch("first_num").to_f
+      @second = params.fetch("second_num").to_f
+      @res = @second * @first
+
+      render({ :template => "/First4/multiplicationRes.html.erb"})
+    end
 
     # ====================== Division =====================
+    def divideForm
+      render({ :template => "/First4/divideForm.html.erb"})
 
+    end
+    
+    def divideRes
+      @first = params.fetch("first_num").to_f
+      @second = params.fetch("second_num").to_f
+      @res = @first/@second
+
+      render({ :template => "/First4/divideRes.html.erb"})
+    end
 
 end
