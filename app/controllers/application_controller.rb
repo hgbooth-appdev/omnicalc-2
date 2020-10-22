@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
 
       keys = searchRes.keys
 
-      
+      @res = {}
 
       @lat = searchRes.fetch("latitude")
       @long = searchRes.fetch("longitude")
@@ -93,6 +93,13 @@ class ApplicationController < ActionController::Base
       @hrly = searchRes.fetch("hourly").fetch("summary")
       @daily = searchRes.fetch("daily").fetch("summary")
 
+      @res["Latitude"] = @lat
+      @res["Longitude"] = @long
+      @res["Current Temperature"] = @curTemp
+      @res["Current Summary"] = @curSumm
+      @res["Outlook for next sixty minutes"] = @mtly
+      @res["Outlook for next several hours"] = @hrly
+      @res["Outlook for next several days"] = @daily
 
       render({ :template => "/APIs/weatherRes.html.erb"})
     end
