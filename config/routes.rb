@@ -16,9 +16,7 @@ Rails.application.routes.draw do
   get("/wizard_divide", {:controller => "application", :action => "divideRes"})
   
   
-  get("/coords_to_weather/new", {:controller => "application", :action => "coordWeather"})
-  get("/coords_to_weather/new", {:controller => "application", :action => "coordWeather"})
-
-  
+  get("/coords_to_weather/new", {:controller => "application", :action => "weatherForm"})
+  get("/coords_to_weather/results", {:controller => "application", :action => "weatherRes"})
 
 end

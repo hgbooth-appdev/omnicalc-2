@@ -57,4 +57,18 @@ class ApplicationController < ActionController::Base
       render({ :template => "/First4/divideRes.html.erb"})
     end
 
+
+    def weatherForm
+      
+      render({ :template => "/APIs/weatherForm.html.erb"})
+    end
+
+    def weatherRes
+      
+      @test = params.keys
+
+      dsKey = 26f63e92c5006b5c493906e7953da893
+      render({ :template => "/APIs/weatherRes.html.erb"})
+    end
+
 end
