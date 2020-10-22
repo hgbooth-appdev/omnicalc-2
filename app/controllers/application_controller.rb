@@ -104,4 +104,15 @@ class ApplicationController < ActionController::Base
       render({ :template => "/APIs/weatherRes.html.erb"})
     end
 
+
+    def streetForm
+      render({ :template => "/APIs/streetForm.html.erb"})
+    end
+
+    def streetRes
+      address = params.fetch("user_street_address")
+
+      render({ :template => "/APIs/streetRes.html.erb"})
+    end
+
 end
