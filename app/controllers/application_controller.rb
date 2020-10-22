@@ -64,17 +64,36 @@ class ApplicationController < ActionController::Base
     end
 
     def weatherRes
-      @lat = params.fetch("user_latitude")
-      @long = params.fetch("user_longitude")
+      lat = params.fetch("user_latitude")
+      long = params.fetch("user_longitude")
 
       # https://api.darksky.net/forecast/26f63e92c5006b5c493906e7953da893/37.8267,-122.4233
       dsStart = "https://api.darksky.net/forecast/"
       
-      dsEnd = "/" + @lat + ","+@long
+      dsEnd = "/" + lat + ","+long
       dskey = ENV.fetch("DSKEY")
       dsString = dsStart + dskey + dsEnd
       
-      @printer = dsString
+      searchRes = open(dsString).read
+      searchRes = JSON.parse(searchRes)
+
+      keys = searchRes.keys
+
+      
+
+      @lat = searchRes.fetch("latitude")
+      @long = searchRes.fetch("longitude")
+
+      curFcst = searchRes.fetch("currently")
+
+      @curTemp = curFcst.fetch("temperature")
+      @curSumm = curFcst.fetch("summary")
+      
+      @mtly = searchRes.fetch("minutely").fetch("summary")
+      @hrly = searchRes.fetch("hourly").fetch("summary")
+      @daily = searchRes.fetch("daily").fetch("summary")
+
+
       render({ :template => "/APIs/weatherRes.html.erb"})
     end
 
