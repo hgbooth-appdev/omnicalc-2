@@ -14,5 +14,11 @@ Rails.application.routes.draw do
 
   get("/divide", {:controller => "application", :action => "divideForm"})
   get("/wizard_divide", {:controller => "application", :action => "divideRes"})
+  
+  
+  get("/coords_to_weather/new", {:controller => "application", :action => "coordWeather"})
+  get("/coords_to_weather/new", {:controller => "application", :action => "coordWeather"})
+
+  
 
 end
